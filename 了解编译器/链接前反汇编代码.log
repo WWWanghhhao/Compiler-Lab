@@ -1,0 +1,82 @@
+
+test.o：     文件格式 elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <calculate_area>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	f2 0f 11 45 f8       	movsd  %xmm0,-0x8(%rbp)
+   d:	f2 0f 10 45 f8       	movsd  -0x8(%rbp),%xmm0
+  12:	66 0f 28 c8          	movapd %xmm0,%xmm1
+  16:	f2 0f 59 c8          	mulsd  %xmm0,%xmm1
+  1a:	f2 0f 10 05 00 00 00 	movsd  0x0(%rip),%xmm0        # 22 <calculate_area+0x22>
+  21:	00 
+  22:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+  26:	66 48 0f 7e c0       	movq   %xmm0,%rax
+  2b:	66 48 0f 6e c0       	movq   %rax,%xmm0
+  30:	5d                   	pop    %rbp
+  31:	c3                   	ret    
+
+0000000000000032 <main>:
+  32:	f3 0f 1e fa          	endbr64 
+  36:	55                   	push   %rbp
+  37:	48 89 e5             	mov    %rsp,%rbp
+  3a:	48 83 ec 10          	sub    $0x10,%rsp
+  3e:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 45 <main+0x13>
+  45:	48 89 c6             	mov    %rax,%rsi
+  48:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 4f <main+0x1d>
+  4f:	48 89 c7             	mov    %rax,%rdi
+  52:	b8 00 00 00 00       	mov    $0x0,%eax
+  57:	e8 00 00 00 00       	call   5c <main+0x2a>
+  5c:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 63 <main+0x31>
+  63:	66 48 0f 6e c0       	movq   %rax,%xmm0
+  68:	e8 00 00 00 00       	call   6d <main+0x3b>
+  6d:	66 48 0f 7e c0       	movq   %xmm0,%rax
+  72:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  76:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  7a:	66 48 0f 6e c0       	movq   %rax,%xmm0
+  7f:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 86 <main+0x54>
+  86:	48 89 c7             	mov    %rax,%rdi
+  89:	b8 01 00 00 00       	mov    $0x1,%eax
+  8e:	e8 00 00 00 00       	call   93 <main+0x61>
+  93:	f2 0f 10 0d 00 00 00 	movsd  0x0(%rip),%xmm1        # 9b <main+0x69>
+  9a:	00 
+  9b:	f2 0f 10 05 00 00 00 	movsd  0x0(%rip),%xmm0        # a3 <main+0x71>
+  a2:	00 
+  a3:	f2 0f 58 c1          	addsd  %xmm1,%xmm0
+  a7:	f2 0f 11 05 00 00 00 	movsd  %xmm0,0x0(%rip)        # af <main+0x7d>
+  ae:	00 
+  af:	c7 45 f0 00 00 00 00 	movl   $0x0,-0x10(%rbp)
+  b6:	c7 45 f4 01 00 00 00 	movl   $0x1,-0xc(%rbp)
+  bd:	eb 0a                	jmp    c9 <main+0x97>
+  bf:	8b 45 f4             	mov    -0xc(%rbp),%eax
+  c2:	01 45 f0             	add    %eax,-0x10(%rbp)
+  c5:	83 45 f4 01          	addl   $0x1,-0xc(%rbp)
+  c9:	83 7d f4 64          	cmpl   $0x64,-0xc(%rbp)
+  cd:	7e f0                	jle    bf <main+0x8d>
+  cf:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # d6 <main+0xa4>
+  d6:	66 48 0f 6e c0       	movq   %rax,%xmm0
+  db:	be 64 00 00 00       	mov    $0x64,%esi
+  e0:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # e7 <main+0xb5>
+  e7:	48 89 c7             	mov    %rax,%rdi
+  ea:	b8 01 00 00 00       	mov    $0x1,%eax
+  ef:	e8 00 00 00 00       	call   f4 <main+0xc2>
+  f4:	81 7d f0 88 13 00 00 	cmpl   $0x1388,-0x10(%rbp)
+  fb:	74 0b                	je     108 <main+0xd6>
+  fd:	81 7d f0 ba 13 00 00 	cmpl   $0x13ba,-0x10(%rbp)
+ 104:	74 13                	je     119 <main+0xe7>
+ 106:	eb 21                	jmp    129 <main+0xf7>
+ 108:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 10f <main+0xdd>
+ 10f:	48 89 c7             	mov    %rax,%rdi
+ 112:	e8 00 00 00 00       	call   117 <main+0xe5>
+ 117:	eb 10                	jmp    129 <main+0xf7>
+ 119:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 120 <main+0xee>
+ 120:	48 89 c7             	mov    %rax,%rdi
+ 123:	e8 00 00 00 00       	call   128 <main+0xf6>
+ 128:	90                   	nop
+ 129:	b8 00 00 00 00       	mov    $0x0,%eax
+ 12e:	c9                   	leave  
+ 12f:	c3                   	ret    

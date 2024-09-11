@@ -1,0 +1,124 @@
+
+;; Function calculate_area (calculate_area, funcdef_no=0, decl_uid=3399, cgraph_uid=1, symbol_order=1)
+
+
+Analyzing function body size: calculate_area/1
+   fp_expression set
+
+IPA function summary for calculate_area/1 fp_expression
+  global time:     4.000000
+  self size:       5
+  global size:     5
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:3.000000, time:4.000000
+    size:2.000000, time:0.000000,  executed if:(not inlined)
+  calls:
+
+double calculate_area (double radius)
+{
+  double D.3414;
+  double _1;
+  double _3;
+
+  <bb 2> :
+  _1 = radius_2(D) * radius_2(D);
+  _3 = _1 * 3.141592653589793115997963468544185161590576171875e+0;
+
+  <bb 3> :
+<L0>:
+  return _3;
+
+}
+
+
+
+;; Function main (main, funcdef_no=1, decl_uid=3401, cgraph_uid=2, symbol_order=2)
+
+
+Analyzing function body size: main/2
+   fp_expression set
+
+IPA function summary for main/2 fp_expression
+  global time:     83.000000
+  self size:       34
+  global size:     34
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:15.000000, time:12.000000
+    size:2.000000, time:0.000000,  executed if:(not inlined)
+  calls:
+    __builtin_puts/5 function body not available
+      freq:1.00 loop depth: 0 size: 2 time: 11
+    __builtin_puts/5 function body not available
+      freq:1.00 loop depth: 0 size: 2 time: 11
+    printf/4 function body not available
+      freq:1.00 loop depth: 0 size: 4 time: 13
+    printf/4 function body not available
+      freq:1.00 loop depth: 0 size: 3 time: 12
+    calculate_area/1 function not considered for inlining
+      freq:1.00 loop depth: 0 size: 3 time: 12 callee size: 2 stack: 0
+    scanf/3 function body not available
+      freq:1.00 loop depth: 0 size: 3 time: 12
+
+int main ()
+{
+  int i;
+  int sum;
+  double area;
+  int D.3417;
+  double r.0_1;
+  double r.1_2;
+  double _3;
+  int _18;
+
+  <bb 2> :
+  scanf ("%lf", &r);
+  r.0_1 = r;
+  area_10 = calculate_area (r.0_1);
+  printf ("area is %lf\n", area_10);
+  r.1_2 = r;
+  _3 = r.1_2 + 1.0e+0;
+  r = _3;
+  sum_13 = 0;
+  i_14 = 1;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  sum_19 = sum_4 + i_5;
+  i_20 = i_5 + 1;
+
+  <bb 4> :
+  # sum_4 = PHI <sum_13(2), sum_19(3)>
+  # i_5 = PHI <i_14(2), i_20(3)>
+  if (i_5 <= 100)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  printf ("10 squared is %d and its square root is %f\n", 100, 3.162277660168379522787063251598738133907318115234375e+0);
+  switch (sum_4) <default: <L5> [INV], case 5000: <L3> [INV], case 5050: <L4> [INV]>
+
+  <bb 6> :
+<L3>:
+  __builtin_puts (&"wrong answer"[0]);
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+<L4>:
+  __builtin_puts (&"correct answer"[0]);
+
+  <bb 8> :
+<L5>:
+  _18 = 0;
+
+  <bb 9> :
+<L7>:
+  return _18;
+
+}
+
+
